@@ -5,28 +5,7 @@ Windows VM
 ↓
 
 Wazuh
-                   Internet
-                       │
-             ┌─────────────────┐
-             │ Ubuntu Server   │
-             │ Wazuh Manager   │
-             └─────────────────┘
-                       │
-          Agent Communication (1514/1515)
-                       │
-      ┌────────────────────────────┐
-      │ Windows Server 2022 VM     │
-      │ Wazuh Agent                │
-      │ Windows Event Logs         │
-      │ Sysmon                     │
-      └────────────────────────────┘
-                       │
-                 Security Events
-                       │
-               Detection & Alerts
-                       │
-                Wazuh Dashboard
-                Problem
+      
 
 Windows Agent failed to start.
 
