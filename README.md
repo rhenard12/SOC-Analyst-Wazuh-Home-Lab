@@ -1,70 +1,222 @@
-# SOC-Analyst-Wazuh-Home-Lab
-SOC Analyst Home Lab using Wazuh SIEM, Windows Server 2022, Kali Linux, MITRE ATT&amp;CK, and real-world security event investigations.
-Windows VM
+# 🛡️ SOC Analyst Home Lab – Wazuh SIEM Deployment & Troubleshooting
 
-↓
+> A hands-on Security Operations Center (SOC) home lab built using Wazuh SIEM, Windows Server, Ubuntu Linux, and Oracle VirtualBox to simulate enterprise endpoint monitoring, agent deployment, and incident investigation.
 
-Wazuh
-      
+![Status](https://img.shields.io/badge/Status-In%20Progress-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows%20Server%202025-blue)
+![SIEM](https://img.shields.io/badge/SIEM-Wazuh-green)
+![Virtualization](https://img.shields.io/badge/VirtualBox-Lab-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Windows Agent failed to start.
+---
 
-Symptoms
+# 📖 Overview
 
-Service stopped immediately.
+This project documents my journey of building a Security Operations Center (SOC) home lab using **Wazuh SIEM**.
 
-Investigation
+The objective of this lab is to gain practical experience deploying security monitoring infrastructure, connecting Windows endpoints, investigating deployment issues, analyzing logs, and troubleshooting agent communication.
 
-Reviewed ossec.log
+Rather than only documenting successful installations, this repository demonstrates the complete troubleshooting process that a SOC Analyst performs during real-world deployments.
 
-Verified Windows Services
+---
 
-Checked configuration
+# 🎯 Objectives
 
-Found incorrect manager IP
+- Deploy Wazuh SIEM
+- Configure Windows Server endpoint
+- Install and register Wazuh Agent
+- Monitor endpoint activity
+- Investigate service failures
+- Analyze logs
+- Troubleshoot configuration issues
+- Document findings using professional SOC methodology
 
-Root Cause
+---
 
-Manager configured as
+# 🖥️ Lab Environment
 
-0.0.0.0
+| Component | Technology |
+|-----------|------------|
+| SIEM | Wazuh 4.x |
+| Server | Ubuntu Linux |
+| Endpoint | Windows Server 2025 |
+| Virtualization | Oracle VirtualBox |
+| Shell | Windows PowerShell |
+| Logs | Windows Event Logs |
+| Monitoring | Wazuh Agent |
 
-Resolution
 
-Updated ossec.conf
+---
 
-Restarted Wazuh
+# 🔧 Skills Demonstrated
 
-Verified communication
+- SIEM Deployment
+- Windows Server Administration
+- Linux Administration
+- PowerShell
+- VirtualBox
+- Endpoint Monitoring
+- Log Analysis
+- Windows Services
+- Troubleshooting
+- Security Monitoring
+- Blue Team Operations
+- Incident Investigation
 
-Result
+---
 
-Agent connected successfully.
+# 📷 Deployment Process
 
-Linux Administration
+## Step 1 – Access Wazuh Dashboard
 
-Windows Server
+- Verified Wazuh dashboard accessibility
+- Reviewed security modules
+- Confirmed dashboard health
 
-PowerShell
+---
 
-VirtualBox
+## Step 2 – Deploy Windows Agent
 
-Networking
+- Generated deployment package
+- Copied PowerShell installation command
+- Installed Windows Agent
 
-TCP/IP
+---
 
-Log Analysis
+## Step 3 – Register Endpoint
 
-Threat Detection
+Successfully authenticated the Windows endpoint with the Wazuh Manager.
 
-SIEM
+Example output:
 
-MITRE ATT&CK
+```
+INFO: Requesting a key from server
+INFO: Waiting for server reply
+INFO: Valid key received
+```
 
-Incident Response
+---
 
-Troubleshooting
+## Step 4 – Troubleshooting
 
-Endpoint Security
+During deployment the Windows service failed to start.
 
-Blue Team Operations
+Observed message:
+
+```
+The Wazuh service could not be started.
+```
+
+This required additional investigation.
+
+---
+
+# 🔍 Investigation
+
+The following troubleshooting steps were performed:
+
+- Verified Windows Service status
+- Reviewed PowerShell output
+- Checked Wazuh installation
+- Examined ossec.log
+- Opened ossec.conf
+- Verified server configuration
+- Confirmed agent authentication
+
+---
+
+# 🚨 Root Cause
+
+The Wazuh Agent configuration contained an invalid server address.
+
+```
+<address>0.0.0.0</address>
+```
+
+The agent log reported:
+
+```
+ERROR: Invalid server address found: '0.0.0.0'
+```
+
+---
+
+# 🛠️ Resolution
+
+- Identified incorrect manager address
+- Updated configuration
+- Restarted Wazuh service
+- Verified communication with manager
+
+---
+
+# 📁 Repository Structure
+
+```
+SOC-Analyst-Wazuh-Home-Lab
+│
+├── README.md
+├── Incident_Report.md
+├── Troubleshooting.md
+├── MITRE_Attack.md
+├── screenshots
+└── architecture
+```
+
+---
+
+# 📚 MITRE ATT&CK Mapping
+
+| Tactic | Technique |
+|---------|-----------|
+| Discovery | T1082 – System Information Discovery |
+| Execution | T1059 – Command and Scripting Interpreter |
+| Defense Evasion | T1562 – Impair Defenses |
+| Command and Control | T1071 – Application Layer Protocol |
+
+---
+
+# 📖 Lessons Learned
+
+This project strengthened my understanding of:
+
+- SIEM deployment
+- Endpoint monitoring
+- Windows services
+- Agent authentication
+- Log analysis
+- Troubleshooting enterprise software
+- Security documentation
+
+---
+
+# 🚀 Future Improvements
+
+- Install Sysmon
+- Create custom Wazuh detection rules
+- Simulate brute-force attacks
+- Perform Nmap scans
+- Integrate VirusTotal
+- Generate alerts
+- Create incident response playbooks
+- Build dashboards for threat hunting
+
+---
+
+# 👨‍💻 About Me
+
+I am transitioning into Cybersecurity with a focus on SOC Analyst and Blue Team operations.
+
+This repository is part of my cybersecurity portfolio documenting hands-on projects involving:
+
+- Wazuh
+- Active Directory
+- Windows Server
+- Linux
+- VirtualBox
+- PowerShell
+- Network Security
+- Incident Response
+
+
+
